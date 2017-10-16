@@ -13,6 +13,9 @@ import { GoogleBooksService } from './google-books.service';
 import { BookSearchComponent } from './book-search.component';
 import { SearchResultsComponent } from './search-results.component';
 
+import { StoreModule} from '@ngrx/store';
+import {reducers} from './reducers';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +32,7 @@ import { SearchResultsComponent } from './search-results.component';
     RouterModule.forRoot([
       { path: '', component: SearchComponent }
     ])
+    StoreModule.provideStore(reducers),
   ],
   providers: [GoogleBooksService],
   bootstrap: [AppComponent]
