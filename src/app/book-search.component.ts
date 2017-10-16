@@ -9,9 +9,9 @@ import { FormControl } from '@angular/forms';
     <mat-card>
       <mat-card-title>Find a Book</mat-card-title>
       <mat-card-content>
-        <md-input-container>
-          <input mdInput placeholder="Search for a book" [formControl]="searchTerms">
-        </md-input-container>
+        <mat-input-container>
+          <input matInput placeholder="Search for a book" [formControl]="searchTerms">
+        </mat-input-container>
       </mat-card-content>
     </mat-card>
   `,

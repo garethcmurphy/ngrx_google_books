@@ -1,17 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+
+import {Store} from '@ngrx/store';
+
+import * as fromRoot from './reducers';
 
 @Component({
   selector: 'app-results-count',
   template: `
-    <p>
-      results-count Works!
-    </p>
+    <mat-card>
+      <mat-card-title>Search results: {{count | async}}</mat-card-title>
+    </mat-card>
   `,
-  styles: []
+  styles: [`
+    mat-card-title,
+    mat-card-content {
+      display: flex;
+      justify-content:: center;
+    }
+  `]
 })
 export class ResultsCountComponent implements OnInit {
+  count: Observable<number>;
 
-  constructor() { }
+  constructor(private store: Store<fromRoot.State>) {
+    this.count = store.select(fromRoot.selectCount);
+  }
 
   ngOnInit() {
   }
