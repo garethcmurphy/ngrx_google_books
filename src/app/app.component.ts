@@ -3,9 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <md-toolbar color="primary">
+    <mat-toolbar color="primary">
       NGRX Workshop
-    </md-toolbar>
+    </mat-toolbar>
 
     <router-outlet></router-outlet>
   `

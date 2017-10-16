@@ -13,7 +13,7 @@ const initialState: State = {
   results: []
 }
 
-export function reducer(state = initialState, actions: SearchActions.All): State {
+export function reducer(state = initialState, action: SearchActions.All): State {
   switch (action.type) {
     case SearchActions.SEARCH: {
       return {

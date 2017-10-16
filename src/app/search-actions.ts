@@ -17,3 +17,8 @@ export class SearchSuccess implements Action {
   constructor(public payload: Book[]) {
   }
 }
+
+
+export type All
+  = Search
+  | SearchSuccess;

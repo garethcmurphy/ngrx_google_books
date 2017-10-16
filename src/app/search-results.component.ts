@@ -4,24 +4,24 @@ import { Component, Input, OnInit } from '@angular/core';
   selector: 'app-search-results',
   template: `
     <div class="books">
-     <md-card *ngFor="let book of books" class="book">
-       <md-card-title-group>
-        <img md-card-sm-image
+     <mat-card *ngFor="let book of books" class="book">
+       <mat-card-title-group>
+        <img mat-card-sm-image
           *ngIf="book.volumeInfo.imageLinks?.smallThumbnail"
           [src]="book.volumeInfo.imageLinks?.smallThumbnail"/>
-          <md-card-title>{{ book.volumeInfo.title }}</md-card-title>
-        </md-card-title-group>
-      </md-card>
+          <mat-card-title>{{ book.volumeInfo.title }}</mat-card-title>
+        </mat-card-title-group>
+      </mat-card>
     </div>
   `,
   styles: [`
-    md-card-title,
-    md-card-content {
+    mat-card-title,
+    mat-card-content {
       display: flex;
       justify-content: center;
     }
 
-    md-card.book {
+    mat-card.book {
       width: 400px;
       height: 150px;
       margin: 15px;

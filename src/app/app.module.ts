@@ -4,7 +4,9 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { MaterialModule } from '@angular/material';
+//import { MaterialModule } from '@angular/material';
+import { MatButtonModule, MatInputModule , MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule } from '@angular/material';
+
 
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search.component';
@@ -15,23 +17,31 @@ import { SearchResultsComponent } from './search-results.component';
 
 import { StoreModule} from '@ngrx/store';
 import {reducers} from './reducers';
+import { ResultsCountComponent } from './results-count.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     BookSearchComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    ResultsCountComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpModule,
-    MaterialModule,
+    //MaterialModule,
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatInputModule,
     RouterModule.forRoot([
       { path: '', component: SearchComponent }
-    ])
+    ]),
     StoreModule.provideStore(reducers),
   ],
   providers: [GoogleBooksService],
