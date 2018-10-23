@@ -1,27 +1,27 @@
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import { Book } from './book-model';
+import { Injectable } from "@angular/core";
+import { Book } from "./book-model";
+import { catchError, map } from "rxjs/operators";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 @Injectable()
 export class GoogleBooksService {
-  private API_PATH = 'https://www.googleapis.com/books/v1/volumes';
+  private API_PATH = "https://www.googleapis.com/books/v1/volumes";
 
-  constructor(private http: Http) {}
+  constructor(private http: HttpClient) {}
 
   searchBooks(queryTitle: string): Observable<Book[]> {
-    return this.http.get(`${this.API_PATH}?q=${queryTitle}`)
-      .catch(() => {
-        if (queryTitle === 'RxJS') {
-          return this.http.get('/assets/rxjs.json');
-        } else if (queryTitle === 'Star Wars Bloodline') {
-          return this.http.get('/assets/starwars.json');
+    return this.http.get(`${this.API_PATH}?q=${queryTitle}`).pipe(
+      catchError(() => {
+        if (queryTitle === "RxJS") {
+          return this.http.get("/assets/rxjs.json");
+        } else if (queryTitle === "Star Wars Bloodline") {
+          return this.http.get("/assets/starwars.json");
         } else {
-          return this.http.get('/assets/empty.json');
+          return this.http.get("/assets/empty.json");
         }
-      })
-      .map(res => res.json().items || []);
+      }),
+      map(res => res as Book[] || [])
+    );
   }
 }
